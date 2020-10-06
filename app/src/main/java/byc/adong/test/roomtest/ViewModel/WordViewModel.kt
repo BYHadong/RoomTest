@@ -1,4 +1,4 @@
-package byc.adong.test.roomtest.Room.ViewModel
+package byc.adong.test.roomtest.ViewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

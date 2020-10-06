@@ -11,6 +11,7 @@ import android.widget.EditText
 class NewWordActivity : AppCompatActivity() {
 
     private lateinit var editWordView: EditText
+    private lateinit var editWordView2: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,15 +19,17 @@ class NewWordActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_new_word)
         editWordView = findViewById(R.id.edit_word)
+        editWordView2 = findViewById(R.id.edit_word2)
 
         val button = findViewById<Button>(R.id.button_save)
         button.setOnClickListener {
             val replyIntent = Intent()
-            if (TextUtils.isEmpty(editWordView.text)) {
+            if (TextUtils.isEmpty(editWordView.text) && TextUtils.isEmpty(editWordView2.text)) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
                 val word = editWordView.text.toString()
-                replyIntent.putExtra(EXTRA_REPLY, word)
+                val word2 = editWordView2.text.toString()
+                replyIntent.putExtra(EXTRA_REPLY, "word : $word, wordMemo : $word2")
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             finish()

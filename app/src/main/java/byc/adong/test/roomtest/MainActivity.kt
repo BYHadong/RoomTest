@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import byc.adong.test.roomtest.RecyclerViewAdapter.WordListAdapter
 import byc.adong.test.roomtest.Room.Entity.Word
-import byc.adong.test.roomtest.Room.ViewModel.WordViewModel
+import byc.adong.test.roomtest.ViewModel.WordViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
@@ -45,7 +45,8 @@ class MainActivity : AppCompatActivity() {
 
         if(requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK){
             data?.getStringExtra(NewWordActivity.EXTRA_REPLY)?.let {
-                val word = Word(it)
+                val wordData = it.split(',')
+                val word = Word(wordData[0], wordData[1])
                 wordViewModel.insert(word)
             }
         }else{
